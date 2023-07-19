@@ -11,6 +11,7 @@ require("./db/config");
 // import routes
 // import api routes
 // const adminRoute = require("./routes/admin");
+const userAuthRoute = require("./routes/userAuth");
 
 // middleware
 app.use(cors());
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // route middleware
 // api routes
-// app.use("/api/admin", adminRoute);
+app.use("/api/user", userAuthRoute);
 
 // const buildPath = path.resolve(__dirname, "build");
 // const indexPath = path.resolve(buildPath, "index.html");
