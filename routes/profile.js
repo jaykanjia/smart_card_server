@@ -10,7 +10,7 @@ router.get("/:id", async (req, res) => {
 		// check profile in db
 		const user = await Profile.findOne({ userId: id });
 		// if user not found
-		if (!user) return res.status(200).send({ error: `Profile not found` });
+		if (!user) return res.status(404).send({ error: `Profile not found` });
 		// if user found
 		return res.status(200).send({ message: `Profile data`, data: user });
 	} catch (error) {
@@ -24,7 +24,7 @@ router.get("/", varifyUser, async (req, res) => {
 		// check profile in db
 		const user = await Profile.findOne({ userId: id });
 		// if user not found
-		if (!user) return res.status(200).send({ error: `Profile not found` });
+		if (!user) return res.status(404).send({ error: `Profile not found` });
 		// if user found
 		return res.status(200).send({ message: `Profile data`, data: user });
 	} catch (error) {
