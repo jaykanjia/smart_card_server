@@ -13,6 +13,7 @@ require("./db/config");
 // const adminRoute = require("./routes/admin");
 const userAuthRoute = require("./routes/userAuth");
 const profileRoute = require("./routes/profile");
+const savedCardRoute = require("./routes/savedCards");
 
 // middleware
 app.use(cors());
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 // api routes
 app.use("/api/user", userAuthRoute);
 app.use("/api/profile", profileRoute);
+app.use("/api/cards", savedCardRoute);
 
 // const buildPath = path.resolve(__dirname, "build");
 // const indexPath = path.resolve(buildPath, "index.html");
