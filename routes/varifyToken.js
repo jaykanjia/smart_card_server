@@ -15,7 +15,6 @@ const varifyToken = function (req, res) {
 
 const varifyUser = async function (req, res, next) {
 	const varifiedUser = varifyToken(req, res);
-	// console.log(varifiedUser);
 	try {
 		const result = await User.findById(varifiedUser.id);
 		if (!result) return res.status(400).json({ message: "invalid User" });

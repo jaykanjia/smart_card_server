@@ -33,7 +33,6 @@ router.post("/", varifyUser, async (req, res) => {
 		}
 		// if userId is found
 		const oldCardList = savedCards.savedCards;
-		console.log(oldCardList);
 		// find is profileId is already in card list
 		const cardFound = oldCardList.find((cardId) => cardId === req.body.data);
 		// if card already in list

@@ -48,11 +48,29 @@ router.post("/", varifyUser, async (req, res) => {
 			userId: id,
 			...req.body.data,
 		});
-		console.log(newProfile);
 		// save profile into the database
 		const result = await newProfile.save();
 		// if success
 		if (result) return res.status(200).send({ message: `Profile Created` });
+	} catch (error) {
+		return res.status(500).send({ error: `Server error ${error}` });
+	}
+});
+
+router.put("/", varifyUser, async (req, res) => {
+	try {
+		const id = req.body.user.id;
+		const filter = { userId: id };
+		const data = req.body.data;
+		// update profile in db
+		const user = await Profile.findOneAndUpdate(filter, data);
+		// // create new profile object
+		// const newProfile = new Profile({
+		// 	userId: id,
+		// 	...req.body.data,
+		// });
+		// if success
+		if (user) return res.status(200).send({ message: `Profile Updated` });
 	} catch (error) {
 		return res.status(500).send({ error: `Server error ${error}` });
 	}
